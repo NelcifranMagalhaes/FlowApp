@@ -14,7 +14,7 @@ function Routes() {
           name="Home"
           component={Main}
           options={{
-            title: 'My home',
+            title: 'AppSecFlowApp',
             headerTitleAlign: 'center',
             headerStyle: {
               backgroundColor: '#f4511e',
