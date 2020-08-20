@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Keybord, ActivityIndicator} from 'react-native';
+import {Keyboard, ActivityIndicator} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-community/async-storage';
 import {Container, Form, Input, SubmitButton, List} from './styles';
 import api from '../../services/api';
 import Analysis from '../../components/Analysis';
@@ -8,29 +9,48 @@ import Analysis from '../../components/Analysis';
 export default class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {newUser: '', users: [], loading: false};
+    this.state = {apiKey: '', apiData: [], loading: false};
+  }
+
+  async componentDidMount() {
+    // Get in smarthphone database item
+    const apiData = await AsyncStorage.getItem('apiData');
+    if (apiData) {
+      this.setState({apiData: JSON.parse(apiData)});
+    }
+  }
+
+  // Set value in smarthphone database
+  async componentDidUpdate(_, prevState) {
+    const {apiData} = this.state;
+    if (prevState.apiData !== apiData) {
+      AsyncStorage.setItem('apiData', JSON.stringify(apiData));
+    }
   }
 
   handleAddUser = async () => {
-    const {users, newUser} = this.state;
+    const {apiKey} = this.state;
 
     this.setState({loading: true});
 
     const response = await api.get(`/api/v2/projects`, {
-      headers: {'x-api-key': newUser},
+      headers: {'x-api-key': apiKey},
     });
 
-    const data = response.data;
+    const {data} = response;
 
     this.setState({
-      users: data,
-      newUser: '',
+      apiData: data,
+      apiKey: '',
       loading: false,
     });
+
+    // hide keyboar after send request
+    Keyboard.dismiss();
   };
 
   render() {
-    const {users, newUser, loading} = this.state;
+    const {apiData, apiKey, loading} = this.state;
 
     return (
       <Container>
@@ -39,8 +59,8 @@ export default class Main extends Component {
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Adicionar API KEY"
-            value={newUser}
-            onChangeText={(text) => this.setState({newUser: text})}
+            value={apiKey}
+            onChangeText={(text) => this.setState({apiKey: text})}
             returnKeyType="send"
             onSubmitEditing={this.handleAddUser}
           />
@@ -53,7 +73,7 @@ export default class Main extends Component {
           </SubmitButton>
         </Form>
         <List
-          data={users}
+          data={apiData}
           keyExtractor={(item) => String(item.pid)}
           renderItem={({item}) => <Analysis data={item} />}
         />

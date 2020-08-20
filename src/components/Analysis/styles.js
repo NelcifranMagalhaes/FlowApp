@@ -23,7 +23,6 @@ export const Container = styled.View`
   justify-content: space-between;
 `;
 
-
 export const Name = styled.Text`
   font-size: 14px;
   color: #333;
@@ -33,9 +32,10 @@ export const Name = styled.Text`
 `;
 
 export const Id = styled.Text`
-  font-size: 13px;
+  font-size: 14px;
   line-height: 18px;
-  color: #999;
+  color: #333;
+  font-weight: bold;
   margin-top: 5px;
   text-align: center;
 `;
@@ -57,6 +57,7 @@ export const ProfileButton = styled(RectButton)`
   margin-top: 10px;
   align-self: stretch;
   border-radius: 4px;
+  background: #7159c1;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -68,5 +69,6 @@ export const ProfileButtonText = styled.Text`
   text-transform: uppercase;
 `;
 export const Info = styled.View`
-  margin-left: 15px;
+  align-items: center;
+  margin: 0 20px 30px;
 `;
