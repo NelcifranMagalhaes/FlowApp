@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Main from './pages/Main';
-import User from './pages/User';
+import Project from './pages/Project';
 
 const Stack = createStackNavigator();
 
@@ -27,9 +27,9 @@ function Routes() {
         />
         <Stack.Screen
           name="Details"
-          component={User}
+          component={Project}
           options={{
-            title: 'Details',
+            title: 'Detalhes',
             headerTitleAlign: 'center',
             headerStyle: {
               backgroundColor: '#f4511e',

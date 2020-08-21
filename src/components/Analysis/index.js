@@ -13,12 +13,8 @@ import {
   ProfileButtonText,
 } from './styles';
 
-function handleNavigate(analisys) {
-  const navigation = useNavigation();
-  navigation.navigate('Details', analisys);
-}
-
 export default function Analysis({data}) {
+  const navigation = useNavigation();
   return (
     <Container colorStatus={data.project_status}>
       <Id>{data.pid}</Id>
@@ -26,7 +22,7 @@ export default function Analysis({data}) {
         <Name>{data.label}</Name>
         <Type>{data.project_type}</Type>
         <Status>{data.project_status}</Status>
-        <ProfileButton onPress={() => handleNavigate(data)}>
+        <ProfileButton onPress={() => navigation.navigate('Details', data)}>
           <ProfileButtonText>ver detalhes</ProfileButtonText>
         </ProfileButton>
       </Info>
@@ -36,4 +32,10 @@ export default function Analysis({data}) {
 
 Analysis.propTypes = {
   data: PropTypes.string.isRequired,
+};
+
+Analysis.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };

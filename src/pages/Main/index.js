@@ -51,7 +51,6 @@ export default class Main extends Component {
 
   render() {
     const {apiData, apiKey, loading} = this.state;
-
     return (
       <Container>
         <Form>
