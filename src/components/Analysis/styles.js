@@ -18,7 +18,7 @@ export const Container = styled.View`
   border-radius: 4px;
   background: ${(props) => selectColor(props.colorStatus)}
   display: flex;
-  flex-direction: row;
+  flex: 1;
   align-items: center;
   justify-content: space-between;
 `;
@@ -55,9 +55,9 @@ export const Type = styled.Text`
 `;
 export const ProfileButton = styled(RectButton)`
   margin-top: 10px;
-  align-self: stretch;
+  align-self: center;
   border-radius: 4px;
-  background: #7159c1;
+  background: #DFB42B;
   justify-content: center;
   align-items: center;
   height: 36px;
@@ -71,5 +71,4 @@ export const ProfileButtonText = styled.Text`
 `;
 export const Info = styled.View`
   align-items: center;
-  margin: 0 20px 30px;
 `;

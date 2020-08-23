@@ -17,7 +17,7 @@ function Routes() {
             title: 'AppSecFlowApp',
             headerTitleAlign: 'center',
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: '#DFB42B',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -32,7 +32,7 @@ function Routes() {
             title: 'Detalhes da Análise',
             headerTitleAlign: 'center',
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: '#DFB42B',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {

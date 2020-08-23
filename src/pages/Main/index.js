@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {Container, Form, Input, SubmitButton, List} from './styles';
 import api from '../../services/api';
 import Analysis from '../../components/Analysis';
+import Background from '../../components/Background';
 
 export default class Main extends Component {
   constructor(props) {
@@ -52,31 +53,33 @@ export default class Main extends Component {
   render() {
     const {apiData, apiKey, loading} = this.state;
     return (
-      <Container>
-        <Form>
-          <Input
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Adicionar API KEY"
-            value={apiKey}
-            onChangeText={(text) => this.setState({apiKey: text})}
-            returnKeyType="send"
-            onSubmitEditing={this.handleAddUser}
+      <Background>
+        <Container>
+          <Form>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              placeholder="Adicionar API KEY"
+              value={apiKey}
+              onChangeText={(text) => this.setState({apiKey: text})}
+              returnKeyType="send"
+              onSubmitEditing={this.handleAddUser}
+            />
+            <SubmitButton loading={loading} onPress={this.handleAddUser}>
+              {loading ? (
+                <ActivityIndicator color="#FFF" />
+              ) : (
+                <Icon name="add" size={20} color="#FFF" />
+              )}
+            </SubmitButton>
+          </Form>
+          <List
+            data={apiData}
+            keyExtractor={(item) => String(item.pid)}
+            renderItem={({item}) => <Analysis data={item} />}
           />
-          <SubmitButton loading={loading} onPress={this.handleAddUser}>
-            {loading ? (
-              <ActivityIndicator color="#FFF" />
-            ) : (
-              <Icon name="add" size={20} color="#FFF" />
-            )}
-          </SubmitButton>
-        </Form>
-        <List
-          data={apiData}
-          keyExtractor={(item) => String(item.pid)}
-          renderItem={({item}) => <Analysis data={item} />}
-        />
-      </Container>
+        </Container>
+      </Background>
     );
   }
 }

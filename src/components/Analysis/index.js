@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import PropTypes from 'prop-types';
+import Background from '../Background';
 
 import {
   Container,
@@ -16,17 +17,19 @@ import {
 export default function Analysis({data}) {
   const navigation = useNavigation();
   return (
-    <Container colorStatus={data.project_status}>
-      <Info>
-        <Id>{data.pid}</Id>
-        <Name>{data.label}</Name>
-        <Type>{data.project_type}</Type>
-        <Status>{data.project_status}</Status>
-        <ProfileButton onPress={() => navigation.navigate('Details', data)}>
-          <ProfileButtonText>ver detalhes</ProfileButtonText>
-        </ProfileButton>
-      </Info>
-    </Container>
+    <Background>
+      <Container colorStatus={data.project_status}>
+        <Info>
+          <Id>{data.pid}</Id>
+          <Name>{data.label}</Name>
+          <Type>{data.project_type}</Type>
+          <Status>{data.project_status}</Status>
+          <ProfileButton onPress={() => navigation.navigate('Details', data)}>
+            <ProfileButtonText>ver detalhes</ProfileButtonText>
+          </ProfileButton>
+        </Info>
+      </Container>
+    </Background>
   );
 }
 

@@ -11,6 +11,7 @@ export const Analysis = styled.View`
   flex: 1;
   align-items: center;
   margin: 0 20px 40px;
+  margin-top: 10px;
 `;
 
 export const TextAnalysis = styled.Text`
