@@ -12,10 +12,9 @@ yarn install
 
 ## Features
 For use this app you need API KEY from [APPSECFLOW](https://app.conviso.com.br)
-```python
- List all Projects
- List data for specific Project
-```
+
+ * List all Projects
+ * List data for specific Project
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
