@@ -29,7 +29,7 @@ function Routes() {
           name="Details"
           component={Project}
           options={{
-            title: 'Detalhes',
+            title: 'Detalhes da Análise',
             headerTitleAlign: 'center',
             headerStyle: {
               backgroundColor: '#f4511e',

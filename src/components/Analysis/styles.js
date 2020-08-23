@@ -67,6 +67,7 @@ export const ProfileButtonText = styled.Text`
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
+  align-items: center;
 `;
 export const Info = styled.View`
   align-items: center;

@@ -17,8 +17,8 @@ export default function Analysis({data}) {
   const navigation = useNavigation();
   return (
     <Container colorStatus={data.project_status}>
-      <Id>{data.pid}</Id>
       <Info>
+        <Id>{data.pid}</Id>
         <Name>{data.label}</Name>
         <Type>{data.project_type}</Type>
         <Status>{data.project_status}</Status>
@@ -32,10 +32,4 @@ export default function Analysis({data}) {
 
 Analysis.propTypes = {
   data: PropTypes.string.isRequired,
-};
-
-Analysis.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
 };
