@@ -33,6 +33,15 @@ export default function Analysis({data}) {
   );
 }
 
+Analysis.defaultProps = {
+  data: {},
+};
+
 Analysis.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    pid: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    project_type: PropTypes.string,
+    project_status: PropTypes.string,
+  }),
 };

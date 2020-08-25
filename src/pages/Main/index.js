@@ -34,7 +34,7 @@ export default class Main extends Component {
 
     this.setState({loading: true});
 
-    const response = await api.get(`/api/v2/projects`, {
+    const response = await api.get(`/api/v2/projects?page=1`, {
       headers: {'x-api-key': apiKey},
     });
 
